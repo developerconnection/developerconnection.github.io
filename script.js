@@ -72,3 +72,40 @@ setActiveNav();
     debounceTimer = setTimeout(filterCards, 150);
   });
 })();
+
+// Dark mode toggle functionality
+(function() {
+  const themeToggle = document.getElementById('theme-toggle');
+  const sunIcon = document.getElementById('sun-icon');
+  const moonIcon = document.getElementById('moon-icon');
+  const html = document.documentElement;
+
+  if (!themeToggle || !sunIcon || !moonIcon) {
+    console.error('Theme toggle elements not found!');
+    return;
+  }
+
+  // Function to update icons based on theme
+  function updateIcons(isDark) {
+    if (isDark) {
+      sunIcon.classList.remove('hidden');
+      moonIcon.classList.add('hidden');
+    } else {
+      sunIcon.classList.add('hidden');
+      moonIcon.classList.remove('hidden');
+    }
+  }
+
+  // Check for saved theme preference or default to light mode
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  const isDark = savedTheme === 'dark';
+  html.classList.toggle('dark', isDark);
+  updateIcons(isDark);
+
+  // Toggle theme on button click
+  themeToggle.addEventListener('click', () => {
+    const isDarkNow = html.classList.toggle('dark');
+    localStorage.setItem('theme', isDarkNow ? 'dark' : 'light');
+    updateIcons(isDarkNow);
+  });
+})();
