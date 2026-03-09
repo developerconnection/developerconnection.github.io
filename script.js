@@ -12,7 +12,7 @@ const portfolioItems = [
     image: "./Assets/images/HEADLESSmodelPortfolioImage.png",
     date: "Feb 22, 2026",
     timeTaken: "30 minutes",
-    tags: ["3d", "model", "modeling", "headless", "roblox"],
+    tags: ["3d", "model", "modeling", "head", "roblox"],
     link: "https://www.roblox.com/catalog/113493087079243/HEADLESS-Mask",
     linkText: "View on Roblox",
     type: "image"
@@ -49,7 +49,7 @@ const portfolioItems = [
     videoUrl: "https://www.youtube.com/watch?v=icnSmcAY5pY",
     date: "2024",
     timeTaken: "Few hours maybe",
-    tags: ["scripting", "gameplay", "roblox"],
+    tags: ["scripting", "gameplay", "group", "roblox"],
     link: "https://www.youtube.com/watch?v=icnSmcAY5pY",
     linkText: "Watch on YouTube",
     type: "video"
@@ -249,7 +249,7 @@ const portfolioItems = [
 // Function to create a portfolio card element
 function createPortfolioCard(item) {
   const card = document.createElement('div');
-  card.className = 'portfolio-card bg-white dark:bg-black dark:border dark:border-green-400 rounded-lg shadow-md overflow-hidden flex flex-col';
+  card.className = 'portfolio-card bg-white dark:bg-black dark:border dark:border-green-400 shadow-md overflow-hidden flex flex-col';
   card.setAttribute('data-tags', item.tags.join(','));
 
   let mediaContent = '';
@@ -344,17 +344,17 @@ function initializePortfolioSearch() {
       return;
     }
 
-    const terms = query.split(/\s+/);
+    const terms = query.split(/\s+/); // This splits it into multiple terms, like model sphere, for more exact.
     let visibleCount = 0;
 
     cards.forEach(card => {
       const tags = (card.dataset.tags || '').toLowerCase();
       const text = card.innerText.toLowerCase();
       const matches = terms.every(term => tags.includes(term) || text.includes(term));
-
+// Add more things to the search process, figure out what all these words do, like query.split, bla bla. 
       if (matches) {
         card.style.display = '';
-        visibleCount++;
+        visibleCount++; //dafuq är detta?
       } else {
         card.style.display = 'none';
       }
