@@ -3,6 +3,7 @@
  * Handles theme toggle, portfolio filtering, and dynamic content rendering
  */
 
+const reservedTerms = ["ui","model","modeling","script","scripting","build","building","video","video editing", "tool", "ai","environment","sculpting","rigging","animation","lighting"]
 // Portfolio data structure for easy management and addition of new items
 const portfolioItems = [
   {
@@ -10,7 +11,7 @@ const portfolioItems = [
     title: "Headless Mask",
     description: "Mask with text \"HEADLESS\"",
     image: "./Assets/images/HEADLESSmodelPortfolioImage.png",
-    date: "Feb 22, 2026",
+    date: "2026",
     timeTaken: "30 minutes",
     tags: ["3d", "model", "modeling", "head", "roblox"],
     link: "https://www.roblox.com/catalog/113493087079243/HEADLESS-Mask",
@@ -22,7 +23,7 @@ const portfolioItems = [
     title: "Hustler Cap",
     description: "Black cap with text \"Hustler\".",
     image: "./Assets/images/HustlerCapPortfolioImage.png",
-    date: "Feb 21, 2026",
+    date: "2026",
     timeTaken: "90 minutes",
     tags: ["3d", "model", "modeling", "cap", "roblox"],
     link: "https://www.roblox.com/catalog/119091969302250/Hustler-Cap",
@@ -34,7 +35,7 @@ const portfolioItems = [
     title: "THE BIG LEAGUE",
     description: "Skin sphere with the text \"BIG LEAGUE\"",
     image: "./Assets/images/BigLeaguemodelPortfolioImage.png",
-    date: "Jan 10, 2026",
+    date: "2026",
     timeTaken: "1 hour",
     tags: ["3d", "model", "modeling", "sphere", "roblox"],
     link: "https://www.roblox.com/catalog/97111423090018/THE-BIG-LEAGUE",
@@ -49,7 +50,7 @@ const portfolioItems = [
     videoUrl: "https://www.youtube.com/watch?v=icnSmcAY5pY",
     date: "2024",
     timeTaken: "Few hours maybe",
-    tags: ["scripting", "gameplay", "group", "roblox"],
+    tags: ["scripting", "gameplay", "group","script", "roblox"],
     link: "https://www.youtube.com/watch?v=icnSmcAY5pY",
     linkText: "Watch on YouTube",
     type: "video"
@@ -59,7 +60,7 @@ const portfolioItems = [
     title: "Idol Tool",
     description: "An odd looking idol as a Roblox tool.",
     image: "./Assets/images/IdolToolPortfolioImage.png",
-    date: "March 6, 2026",
+    date: "2026",
     timeTaken: "15 minutes",
     tags: ["3d", "model", "modeling", "sculpting", "roblox", "studio", "tool"],
     type: "image"
@@ -70,9 +71,9 @@ const portfolioItems = [
     description: "Showcase of a proximity prompt collision door implementation.",
     image: "https://img.youtube.com/vi/ZDPpYGJUDy8/maxresdefault.jpg",
     videoUrl: "https://www.youtube.com/watch?v=ZDPpYGJUDy8",
-    date: "Aug 14, 2025",
+    date: "2025",
     timeTaken: "5 minutes",
-    tags: ["scripting", "gameplay", "roblox"],
+    tags: ["scripting", "gameplay","script", "roblox"],
     link: "https://www.youtube.com/watch?v=ZDPpYGJUDy8",
     linkText: "Watch on YouTube",
     type: "video"
@@ -83,9 +84,9 @@ const portfolioItems = [
     description: "Showcase of a burning skibidi toilet spawner tool implementation.",
     image: "https://img.youtube.com/vi/0XPHTan12Cg/maxresdefault.jpg",
     videoUrl: "https://www.youtube.com/watch?v=0XPHTan12Cg",
-    date: "Dec 22, 2025",
+    date: "2025",
     timeTaken: "1 hour",
-    tags: ["scripting", "tool", "gameplay", "roblox"],
+    tags: ["scripting", "tool", "gameplay","script", "roblox"],
     link: "https://www.youtube.com/watch?v=0XPHTan12Cg",
     linkText: "Watch on YouTube",
     type: "video"
@@ -96,9 +97,9 @@ const portfolioItems = [
     description: "Showcase of a stud collection system implementation.",
     image: "https://img.youtube.com/vi/vP87Yyb0fI0/maxresdefault.jpg",
     videoUrl: "https://www.youtube.com/watch?v=vP87Yyb0fI0",
-    date: "Late 2025",
+    date: "2025",
     timeTaken: "A couple days",
-    tags: ["scripting", "data", "system", "gameplay", "roblox"],
+    tags: ["scripting", "data", "system", "gameplay","script", "roblox"],
     link: "https://www.youtube.com/watch?v=vP87Yyb0fI0",
     linkText: "Watch on YouTube",
     type: "video"
@@ -110,7 +111,7 @@ const portfolioItems = [
     image: "./Assets/images/DevelopersMindGameLobbyPortfolioImage.png",
     date: "2025",
     timeTaken: "Multiple hours",
-    tags: ["3d", "build", "building", "lobby", "environment", "roblox"],
+    tags: ["3d", "build", "building", "environment", "roblox"],
     type: "image"
   },
   {
@@ -131,7 +132,7 @@ const portfolioItems = [
     videoUrl: "https://www.youtube.com/watch?v=VkIAxPZ926g",
     date: "2024",
     timeTaken: "Few hours",
-    tags: ["scripting", "tool", "gameplay", "roblox"],
+    tags: ["scripting", "script","tool", "gameplay", "roblox"],
     link: "https://www.youtube.com/watch?v=VkIAxPZ926g",
     linkText: "Watch on YouTube",
     type: "video"
@@ -143,7 +144,7 @@ const portfolioItems = [
     image: "./Assets/images/DeveloperMenuUIPortfolioImage.png",
     date: "2025",
     timeTaken: "30 minutes",
-    tags: ["ui", "design", "scripting", "roblox"],
+    tags: ["ui", "design", "scripting", "script", "roblox"],
     type: "image"
   },
   {
@@ -163,7 +164,7 @@ const portfolioItems = [
     image: "./Assets/images/HealthBarUIPortfolioImage.png",
     date: "2025",
     timeTaken: "Max 20 minutes",
-    tags: ["ui", "design", "scripting", "roblox"],
+    tags: ["ui", "design", "scripting", "script", "roblox"],
     type: "image"
   },
   {
@@ -173,7 +174,7 @@ const portfolioItems = [
     image: "./Assets/images/MaintenanceAssetPackPortfolioImage.png",
     date: "2025",
     timeTaken: "1 Hour",
-    tags: ["3d", "model", "modeling", "studio", "roblox"],
+    tags: ["3d", "build", "building", "studio", "roblox"],
     type: "image"
   },
   {
@@ -183,7 +184,7 @@ const portfolioItems = [
     image: "./Assets/images/UIwork1PortfolioImage.png",
     date: "2025",
     timeTaken: "10 minutes",
-    tags: ["ui", "design", "scripting", "roblox"],
+    tags: ["ui", "design", "scripting", "script", "roblox"],
     type: "image"
   },
   {
@@ -193,7 +194,7 @@ const portfolioItems = [
     image: "./Assets/images/TycoonGamePortfolioImage.png",
     date: "2025",
     timeTaken: "2 hours",
-    tags: ["scripting", "tutorial", "system", "roblox"],
+    tags: ["scripting", "tutorial", "system", "script", "roblox"],
     type: "image"
   },
   {
@@ -204,7 +205,7 @@ const portfolioItems = [
     videoUrl: "https://www.youtube.com/watch?v=7sWp74me2ts",
     date: "2025",
     timeTaken: "A day or two",
-    tags: ["scripting", "ui", "system", "gameplay", "roblox"],
+    tags: ["scripting", "ui", "system", "gameplay", "script", "roblox"],
     link: "https://www.youtube.com/watch?v=7sWp74me2ts",
     linkText: "Watch on YouTube",
     type: "video"
@@ -227,7 +228,7 @@ const portfolioItems = [
     videoUrl: "https://www.youtube.com/watch?v=Zt7LRzNjD6k",
     date: "2025",
     timeTaken: "A few hours",
-    tags: ["scripting", "system", "gameplay", "roblox", "ai", "npc", "scp", "module"],
+    tags: ["scripting", "system", "gameplay", "roblox", "script"],
     link: "https://www.youtube.com/watch?v=Zt7LRzNjD6k",
     linkText: "Watch on YouTube",
     type: "video"
@@ -239,7 +240,7 @@ const portfolioItems = [
     image: "./Assets/images/ExplodingDuckBombToolPortfolioImage.png",
     date: "2024",
     timeTaken: "Max 5 minutes",
-    tags: ["3d", "model", "modeling", "sculpting", "roblox", "studio", "tool"],
+    tags: ["3d", "script", "scripting", "roblox", "studio", "tool"],
     link: "https://create.roblox.com/store/asset/136474677018468/Exploding-Duck-Bomb-Tool",
     linkText: "View on Roblox",
     type: "image"
@@ -286,7 +287,7 @@ function createPortfolioCard(item) {
       <h3 class="text-xl font-semibold mb-2 dark:text-white">${item.title}</h3>
       <p class="text-gray-600 dark:text-gray-300 mb-4">${item.description}</p>
       <div class="text-sm text-gray-500 dark:text-gray-400 mb-4 space-y-1">
-        <p>Date: ${item.date}</p>
+        <p>Year: ${item.date}</p>
         <p>Time Taken: ${item.timeTaken}</p>
       </div>
       ${linkHtml}
@@ -351,14 +352,16 @@ function initializePortfolioSearch() {
       const tags = (card.dataset.tags || '').toLowerCase();
       const text = card.innerText.toLowerCase();
       const matches = terms.every(term => tags.includes(term) || text.includes(term));
-// Add more things to the search process, figure out what all these words do, like query.split, bla bla. 
+//Be able to search by property, reserved terms like "ui" only show ui not b"ui"lding
       if (matches) {
         card.style.display = '';
-        visibleCount++; //dafuq är detta?
-      } else {
+        visibleCount++;     
+        
+      }  
+      else {
         card.style.display = 'none';
-      }
-    });
+      } 
+    }); 
 
     if (noResultsMsg) {
       noResultsMsg.classList.toggle('hidden', visibleCount > 0);
